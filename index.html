@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src *; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <link href="./static/css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="./node_modules/materialize-css/dist/css/materialize.min.css">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <h2>UPLOADER</h2>
+  <div class="__container">
+    <div class="__card">
+      <form name="pictureForm" id="pictureForm">
+
+        <div class="input-field col s12">
+          <select name="workorder_id" id="workorder_id">
+            <option value="" disabled selected>Choose workorder</option>
+          </select>
+          <label>Workorders</label>
+        </div>
+
+        <div class="input-field col s12">
+          <select name="windblade_id">
+            <option value="" disabled selected>Choose blade</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Windblade</label>
+        </div>
+
+        <div class="input-field col s12">
+          <select name="region">
+            <option value="" disabled selected>Choose area</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Area</label>
+        </div>
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input id="pictures" name="pictures[]" type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+
+        <div>
+          <button class="waves-effect waves-light btn">upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./node_modules/materialize-css/dist/js/materialize.min.js"></script>
+  <script type="module" src="./static/js/custom.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+
 </html>
